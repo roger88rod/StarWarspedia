@@ -1,0 +1,16 @@
+query Character($person_id: ID!) {
+    person(id: $person_id) {
+        name
+        species {
+            name
+        }
+        homeworld {
+            name
+        }
+        filmConnection {
+            films {
+                episodeID
+            }
+        }
+    }
+}
