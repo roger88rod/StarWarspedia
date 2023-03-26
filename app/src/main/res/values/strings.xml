@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StarWarspedia</string>
+    <string name="action_arrow"><![CDATA[>]]></string>
 </resources>
