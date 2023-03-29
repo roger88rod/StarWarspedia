@@ -1,11 +1,11 @@
 query AllSWCharacters {
     allPeople {
         people {
-            id
             name
             species {
                 name
             }
+            id
         }
     }
 }

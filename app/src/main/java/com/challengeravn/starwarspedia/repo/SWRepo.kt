@@ -1,8 +1,9 @@
 package com.challengeravn.starwarspedia.repo
 
 import com.apollographql.apollo3.api.ApolloResponse
-import com.example.starwars.AllSWCharactersQuery
-import com.example.starwars.CharacterQuery
+import com.challengeravn.starwarspedia.AllSWCharactersQuery
+import com.challengeravn.starwarspedia.CharacterQuery
+
 
 interface SWRepo {
     //To get all SW Characters

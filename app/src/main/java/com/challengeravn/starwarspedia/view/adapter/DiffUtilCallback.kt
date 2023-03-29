@@ -1,7 +1,7 @@
-package com.challengeravn.starwarspedia.adapter
+package com.challengeravn.starwarspedia.view.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.challengeravn.starwarspedia.model.CharacterModel
-import com.example.starwars.CharacterQuery
+
 
 class CharacterDiffUtil : DiffUtil.ItemCallback<CharacterModel>() {
 

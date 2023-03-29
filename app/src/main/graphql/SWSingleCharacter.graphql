@@ -1,15 +1,14 @@
 query Character($person_id: ID!) {
     person(id: $person_id) {
+        id
         name
-        species {
-            name
-        }
-        homeworld {
-            name
-        }
-        filmConnection {
-            films {
-                episodeID
+        eyeColor
+        hairColor
+        skinColor
+        birthYear
+        vehicleConnection {
+            vehicles {
+                name
             }
         }
     }

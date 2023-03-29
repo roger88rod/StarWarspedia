@@ -10,8 +10,8 @@ import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class ViewModel {
-    @ViewModelScoped
+abstract class ViewModelModule {
     @Binds
+    @ViewModelScoped
     abstract fun bindRepo(repo:SWRepoExec):SWRepo
 }
