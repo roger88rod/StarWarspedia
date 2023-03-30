@@ -1,5 +1,6 @@
 package com.challengeravn.starwarspedia
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,31 +27,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         //characterAdapter = CharacterAdapter()
         binding.rvSW.apply {characterAdapter}
         charactersViewModel.queryCharacterList()
-        initializeRV()
-        observeData()
+        val linearManager = LinearLayoutManager(this)
+        binding.rvSW.layoutManager = linearManager
+        binding.rvSW.adapter = characterAdapter
+
+        lifecycleScope.launch {
+            observeData()
+        }
     }
 
-    private fun  observeData(){
-        charactersViewModel.characterList.observe(this){response ->
+    @SuppressLint("NotifyDataSetChanged")
+    fun  observeData(){
+        charactersViewModel.characterList.observe(this){
+            it?.let { items ->
+                //characterAdapter.submitData(items.value?.data?.allPeople?.people)
+                //Getting Data correctly!!!! YEAH!! Now attach it to Adapter
+                Log.i("GetChar ", items.value?.data?.allPeople?.people.toString())
+            }
+                /*response ->
             when(response){
                 is SWState.Success ->{
                     val results = response.value?.data?.allPeople?.people
+                    //Getting Data correctly!!!! YEAH!! Now attach it to Adapter
                     Log.i("GetChar ", response.value?.data?.allPeople?.people.toString())
-                    //characterAdapter.submitData(results)
+
+                    characterAdapter.notifyDataSetChanged()
+
 
                 }
                 else -> Unit
             }
-
+*/
         }
-    }
-
-    private fun initializeRV(){
-        val linearManager = LinearLayoutManager(this)
-        binding.rvSW.layoutManager = linearManager
-        binding.rvSW.adapter = characterAdapter
     }
 }
